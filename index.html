@@ -82,11 +82,16 @@ a{text-decoration:none;color:inherit}
 .nav-right{display:flex;align-items:center;gap:18px}
 .nav-icon{color:rgba(255,255,255,.65);font-size:18px;cursor:pointer;transition:color .2s;line-height:1}
 .nav-icon:hover{color:var(--gold)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:none;background:transparent}
 .nav-hamburger span{width:22px;height:1.5px;background:var(--white);display:block;transition:all .3s}
 @media(max-width:860px){
-  .nav-links,.nav-right .btn{display:none}
+  .nav-inner{position:relative;height:auto;min-height:72px;padding:16px 0}
+  .nav-links{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;gap:0;background:rgba(13,26,74,.98);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-lg)}
+  .nav-links li+li{border-top:1px solid rgba(255,255,255,.1)}
+  .nav-links a{display:block;padding:14px 18px}
+  .nav-right{display:none}
   .nav-hamburger{display:flex}
+  #site-nav.nav-open .nav-links{display:flex}
 }
 
 /* ─────────────────────────────────────────
@@ -373,7 +378,7 @@ footer{background:var(--navy-grad);padding:clamp(60px,7vw,96px) clamp(20px,5vw,6
 <nav id="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Farland<span> Holidays</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="primary-nav">
       <li><a href="destinations-listing.html">Destinations</a></li>
       <li><a href="deals-packages.html">Deals</a></li>
       <li><a href="destination-detail.html">Travel Guides</a></li>
@@ -385,9 +390,9 @@ footer{background:var(--navy-grad);padding:clamp(60px,7vw,96px) clamp(20px,5vw,6
       <span class="nav-icon" title="Wishlist">♡</span>
       <a href="farland-forms.html#inquiry-section" class="btn btn-gold" style="padding:10px 20px;font-size:10px">Plan my trip ↗</a>
     </div>
-    <div class="nav-hamburger" id="menuToggle">
+    <button class="nav-hamburger" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -957,6 +962,21 @@ footer{background:var(--navy-grad);padding:clamp(60px,7vw,96px) clamp(20px,5vw,6
 <script>
 // ── Sticky nav ──
 const nav = document.getElementById('site-nav');
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('primary-nav');
+if (nav && menuToggle && navLinks) {
+  const closeMenu = () => {
+    nav.classList.remove('nav-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+  menuToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav-open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 860) closeMenu(); });
+}
 window.addEventListener('scroll', () => {
   nav.classList.toggle('solid', window.scrollY > 60);
 });

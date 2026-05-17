@@ -90,7 +90,17 @@ button { cursor: pointer; font-family: var(--fb); }
   transition: all .25s var(--ease); box-shadow: var(--sh-blue);
 }
 .btn-nav:hover { background: var(--btn-blue-hover); transform: translateY(-1px); }
-@media(max-width:820px){ .nav-links { display: none; } }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 4px; border: none; background: transparent; }
+.nav-toggle span { width: 22px; height: 1.5px; background: var(--white); display: block; }
+@media(max-width:820px){
+  .nav-inner { position: relative; height: auto; min-height: 68px; padding: 14px 0; }
+  .nav-links { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(13,26,74,.98); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-md); overflow: hidden; box-shadow: var(--sh-lg); }
+  .nav-links li + li { border-top: 1px solid rgba(255,255,255,.1); }
+  .nav-links a { display: block; padding: 13px 16px; }
+  .btn-nav { display: none; }
+  .nav-toggle { display: flex; }
+  #nav.nav-open .nav-links { display: flex; }
+}
 
 /* ══════════════════════════════════════
    PAGE HERO
@@ -231,6 +241,11 @@ button { cursor: pointer; font-family: var(--fb); }
 .step.done .step-label { color: var(--success); }
 .step-line { flex: 1; height: 1px; background: var(--ivory-mid); margin: 0 12px; min-width: 20px; }
 .step.done + .step-line { background: var(--success); }
+@media(max-width:700px) {
+  .step-indicator { overflow-x: auto; padding-bottom: 6px; }
+  .step { min-width: max-content; }
+  .step-line { min-width: 28px; }
+}
 
 /* Form panels for multi-step */
 .form-panel { display: none; }
@@ -614,7 +629,7 @@ footer { background: var(--navy-grad); padding: clamp(48px,6vw,80px) clamp(20px,
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Farland<span> Holidays</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="primary-nav">
       <li><a href="destinations-listing.html">Destinations</a></li>
       <li><a href="deals-packages.html">Deals</a></li>
       <li><a href="destination-detail.html">Travel Guides</a></li>
@@ -622,6 +637,9 @@ footer { background: var(--navy-grad); padding: clamp(48px,6vw,80px) clamp(20px,
       <li><a href="farland-forms.html" class="active">Contact</a></li>
     </ul>
     <button class="btn-nav" onclick="location.href='#inquiry-section'">Plan My Trip ↗</button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -1327,6 +1345,21 @@ rvEls.forEach(el => rvObs.observe(el));
 
 /* ── Nav solid ── */
 const nav = document.getElementById('nav');
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('primary-nav');
+if (nav && navToggle && navLinks) {
+  const closeMenu = () => {
+    nav.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+  navToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
+}
 window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60));
 
 /* ── Sticky plan button shows after scrolling past hero ── */
