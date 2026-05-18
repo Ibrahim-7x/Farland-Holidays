@@ -20,9 +20,9 @@ html { scroll-behavior: smooth; }
   --navy-grad:linear-gradient(90deg, rgba(0,4,7,.98) 0%, rgba(11,45,122,.98) 100%);
   --btn-blue:#7EC9FF;
   --btn-blue-hover:#5BB8FF;
-  --gold:#d60606;
-  --gold-lt:#e83535;
-  --gold-pale:#fce8e8;
+  --gold:#0d6efd;
+  --gold-lt:#5BB8FF;
+  --gold-pale:#E7F5FF;
   --ivory:#F5F5F6;
   --ivory-mid:#EBEBEC;
   --stone:#9EA0A1;
@@ -31,7 +31,7 @@ html { scroll-behavior: smooth; }
   --white:       #FFFFFF;
   --green-wa:    #25D366;
   --green-wa-dk: #128C7E;
-  --red:         #C0392B;
+    --red:         #0d6efd;
   --success:     #1A7A4A;
 
   --fd: 'Montserrat', sans-serif;
@@ -48,7 +48,7 @@ html { scroll-behavior: smooth; }
   --sh-sm: 0 1px 4px rgba(13,26,74,.07);
   --sh-md: 0 4px 22px rgba(13,26,74,.11);
   --sh-lg: 0 12px 52px rgba(13,26,74,.16);
-  --sh-gold: 0 4px 24px rgba(214,6,6,.30);
+  --sh-gold: 0 4px 24px rgba(13,110,253,.30);
   --sh-wa: 0 4px 20px rgba(37,211,102,.35);
   --sh-blue: 0 4px 24px rgba(91,184,255,.35);
 }
@@ -85,7 +85,7 @@ button { cursor: pointer; font-family: var(--fb); }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 .btn-nav {
   background: var(--btn-blue); color: var(--navy); padding: 10px 22px;
-  border-radius: var(--r-sm); border: none;
+  border-radius: var(--r-sm); border: none; font-family: var(--fb);
   font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
   transition: all .25s var(--ease); box-shadow: var(--sh-blue);
 }
@@ -202,7 +202,7 @@ button { cursor: pointer; font-family: var(--fb); }
 }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(214,6,6,.14);
+  box-shadow: 0 0 0 3px rgba(13,110,253,.14);
   background: var(--white);
 }
 .form-input::placeholder, .form-textarea::placeholder { color: var(--stone); }
@@ -280,14 +280,14 @@ button { cursor: pointer; font-family: var(--fb); }
 .inquiry-form-card {
   background: var(--white); border-radius: var(--r-xl);
   box-shadow: var(--sh-lg); overflow: hidden;
-  border: 1px solid rgba(214,6,6,.15);
+  border: 1px solid rgba(13,110,253,.15);
 }
 .form-card-header { background: var(--navy-grad); padding: 28px 32px; }
 .form-card-header h3 { font-family: var(--fd); font-size: 30px; font-weight: 300; color: var(--white); margin-bottom: 4px; }
 .form-card-header p { font-family: var(--fb); font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.6; }
 .form-card-header .reply-badge {
   display: inline-flex; align-items: center; gap: 7px; margin-top: 14px;
-  background: rgba(214,6,6,.15); border: 1px solid rgba(214,6,6,.25);
+  background: rgba(13,110,253,.15); border: 1px solid rgba(13,110,253,.25);
   border-radius: var(--r-pill); padding: 5px 14px;
 }
 .reply-badge span { font-family: var(--fb); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt); }
@@ -327,7 +327,7 @@ input[type=range] {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
   background: var(--white); border: 2.5px solid var(--gold);
-  box-shadow: 0 0 0 3px rgba(214,6,6,.18); cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(13,110,253,.18); cursor: pointer;
 }
 input[type=range]::-moz-range-thumb {
   width: 18px; height: 18px; border-radius: 50%;
@@ -361,7 +361,7 @@ input[type=range]::-moz-range-thumb {
   background: var(--white); border-radius: var(--r-xl);
   box-shadow: var(--sh-md); overflow: hidden; border: 1px solid var(--ivory-mid);
 }
-.contact-card-header { background: var(--gold-pale); padding: 18px 22px; border-bottom: 1px solid rgba(214,6,6,.2); }
+.contact-card-header { background: var(--gold-pale); padding: 18px 22px; border-bottom: 1px solid rgba(13,110,253,.2); }
 .contact-card-header h4 { font-family: var(--fd); font-size: 22px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
 .contact-card-header p { font-family: var(--fb); font-size: 12px; color: var(--stone-dk); }
 .contact-card-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
@@ -373,7 +373,7 @@ input[type=range]::-moz-range-thumb {
 .contact-channel:hover { background: var(--gold-pale); transform: translateX(3px); }
 .ch-icon { width: 40px; height: 40px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
 .ch-icon.phone { background: rgba(13,26,74,.08); }
-.ch-icon.email { background: rgba(214,6,6,.12); }
+.ch-icon.email { background: rgba(13,110,253,.12); }
 .ch-icon.wa { background: rgba(37,211,102,.12); }
 .ch-icon.chat { background: rgba(13,26,74,.08); }
 .ch-text { flex: 1; }
@@ -386,14 +386,14 @@ input[type=range]::-moz-range-thumb {
 /* Expert card */
 .expert-card { background: var(--navy-grad); border-radius: var(--r-xl); padding: 24px; }
 .expert-profile { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-.expert-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(214,6,6,.4); flex-shrink: 0; }
+.expert-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(13,110,253,.4); flex-shrink: 0; }
 .expert-info h4 { font-family: var(--fb); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .expert-info p { font-family: var(--fb); font-size: 11px; color: rgba(255,255,255,.5); }
 .expert-status { display: flex; align-items: center; gap: 6px; font-family: var(--fb); font-size: 11px; color: var(--gold-lt); margin-bottom: 14px; }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-wa); animation: pulse 2s ease-in-out infinite; }
 .expert-quote { font-family: var(--fd); font-size: 16px; font-weight: 300; font-style: italic; color: rgba(255,255,255,.65); line-height: 1.55; border-left: 2px solid var(--gold); padding-left: 14px; margin-bottom: 16px; }
 .expert-specialisms { display: flex; flex-wrap: wrap; gap: 7px; }
-.spec-tag { font-family: var(--fb); font-size: 10px; color: var(--gold-lt); background: rgba(214,6,6,.1); border: 1px solid rgba(214,6,6,.2); border-radius: var(--r-pill); padding: 3px 10px; }
+.spec-tag { font-family: var(--fb); font-size: 10px; color: var(--gold-lt); background: rgba(13,110,253,.1); border: 1px solid rgba(13,110,253,.2); border-radius: var(--r-pill); padding: 3px 10px; }
 
 /* Hours card */
 .hours-card { background: var(--white); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sh-sm); }
@@ -419,7 +419,7 @@ input[type=range]::-moz-range-thumb {
 .quick-quote-wrap::before {
   content: ''; position: absolute; top: -60px; right: -60px;
   width: 260px; height: 260px; border-radius: 50%;
-  border: 1px solid rgba(214,6,6,.08); pointer-events: none;
+  border: 1px solid rgba(13,110,253,.08); pointer-events: none;
 }
 .quick-quote-inner {
   display: grid; grid-template-columns: 1fr 480px;
@@ -1331,7 +1331,7 @@ footer { background: var(--navy-grad); padding: clamp(48px,6vw,80px) clamp(20px,
 <!-- ══════════════════════════════════════
      TOAST NOTIFICATION
 ══════════════════════════════════════ -->
-<div id="toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:9999;background:var(--navy-grad);border:1px solid rgba(214,6,6,.3);border-radius:var(--r-lg);padding:14px 22px;min-width:280px;max-width:360px;box-shadow:var(--sh-lg);transition:transform .4s var(--ease);text-align:center;">
+<div id="toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:9999;background:var(--navy-grad);border:1px solid rgba(13,110,253,.3);border-radius:var(--r-lg);padding:14px 22px;min-width:280px;max-width:360px;box-shadow:var(--sh-lg);transition:transform .4s var(--ease);text-align:center;">
   <p id="toast-msg" style="font-family:var(--fb);font-size:13px;color:var(--white)"></p>
 </div>
 
@@ -1522,8 +1522,8 @@ const badge = document.getElementById('open-status');
 if (badge) {
   badge.textContent = isOpen ? 'Open Now' : 'Currently Closed';
   badge.style.color = isOpen ? 'var(--success)' : 'var(--red)';
-  badge.style.background = isOpen ? 'rgba(26,122,74,.1)' : 'rgba(192,57,43,.08)';
-  badge.style.borderColor = isOpen ? 'rgba(26,122,74,.2)' : 'rgba(192,57,43,.15)';
+  badge.style.background = isOpen ? 'rgba(26,122,74,.1)' : 'rgba(13,110,253,.08)';
+  badge.style.borderColor = isOpen ? 'rgba(26,122,74,.2)' : 'rgba(13,110,253,.15)';
 }
 </script>
 </body>

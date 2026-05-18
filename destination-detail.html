@@ -13,7 +13,7 @@ html{scroll-behavior:smooth}
   --navy:#0D1A4A;--navy-mid:#0D1A4A;--navy-light:#0025cc;
   --navy-grad:linear-gradient(90deg, rgba(0,4,7,.98) 0%, rgba(11,45,122,.98) 100%);
   --btn-blue:#7EC9FF;--btn-blue-hover:#5BB8FF;
-  --gold:#d60606;--gold-light:#e83535;--gold-pale:#fce8e8;
+  --gold:#0d6efd;--gold-light:#5BB8FF;--gold-pale:#E7F5FF;
   --ivory:#F5F5F6;--ivory-mid:#EBEBEC;--stone:#9EA0A1;--stone-dark:#6B6C6D;
   --white:#FFFFFF;--charcoal:#4A4B4C;
   --font-display:'Montserrat',sans-serif;--font-body:'Inter',sans-serif;
@@ -22,7 +22,7 @@ html{scroll-behavior:smooth}
   --shadow-sm:0 1px 4px rgba(13,26,74,.07);
   --shadow-md:0 4px 20px rgba(13,26,74,.11);
   --shadow-lg:0 12px 48px rgba(13,26,74,.16);
-  --shadow-gold:0 4px 24px rgba(214,6,6,.28);
+  --shadow-gold:0 4px 24px rgba(13,110,253,.28);
   --shadow-blue:0 4px 24px rgba(91,184,255,.35);
 }
 body{font-family:var(--font-body);background:var(--ivory);color:var(--navy);overflow-x:hidden}
@@ -130,7 +130,7 @@ a{text-decoration:none;color:inherit}
 /* ── PACKAGES ── */
 .packages-grid{display:flex;flex-direction:column;gap:20px;margin-top:32px}
 .package-card{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-md);overflow:hidden;transition:all .35s var(--ease);border:1px solid transparent}
-.package-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(214,6,6,.25)}
+.package-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(13,110,253,.25)}
 .package-card.featured{border:1px solid var(--gold)}
 .package-featured-tag{background:var(--gold);color:var(--navy);font-family:var(--font-body);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 18px;text-align:center}
 .package-inner{display:grid;grid-template-columns:200px 1fr auto;gap:0;align-items:stretch}
@@ -193,11 +193,11 @@ a{text-decoration:none;color:inherit}
 .climate-bar{width:100%;border-radius:var(--r-sm) var(--r-sm) 0 0;transition:height .3s}
 .climate-temp{font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--navy)}
 .climate-label{font-family:var(--font-body);font-size:9px;color:var(--stone-dark);letter-spacing:.01em;text-transform:uppercase}
-.climate-best{background:var(--gold-pale);border:1px solid rgba(214,6,6,.4);border-radius:var(--r-sm);padding:8px;position:relative}
+.climate-best{background:var(--gold-pale);border:1px solid rgba(13,110,253,.4);border-radius:var(--r-sm);padding:8px;position:relative}
 .climate-best::before{content:'Best';position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--font-body);font-size:8px;font-weight:600;padding:1px 6px;border-radius:var(--r-pill)}
 
 /* ── INQUIRY SIDEBAR ── */
-.inquiry-box{position:sticky;top:88px;background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(214,6,6,.2)}
+.inquiry-box{position:sticky;top:88px;background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(13,110,253,.2)}
 .inquiry-header{background:var(--navy-grad);padding:22px 24px}
 .inquiry-header-price{font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--white);line-height:1}
 .inquiry-header-price small{font-family:var(--font-body);font-size:11px;color:rgba(255,255,255,.45);display:block;margin-bottom:4px}
@@ -206,7 +206,7 @@ a{text-decoration:none;color:inherit}
 .form-group{margin-bottom:16px}
 .form-label{display:block;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:6px}
 .form-input{width:100%;padding:12px 14px;border:1.5px solid var(--ivory-mid);border-radius:var(--r-sm);font-family:var(--font-body);font-size:13px;color:var(--navy);background:var(--ivory);outline:none;transition:border-color .2s,box-shadow .2s}
-.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,6,6,.12);background:var(--white)}
+.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(13,110,253,.12);background:var(--white)}
 .form-input::placeholder{color:var(--stone)}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .inquiry-divider{height:1px;background:var(--ivory-mid);margin:18px 0}
