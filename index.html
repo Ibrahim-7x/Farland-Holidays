@@ -113,7 +113,7 @@ a{text-decoration:none;color:inherit}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
 
 /* Search widget */
-.hero-search{background:rgba(255,255,255,.10);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-lg);padding:20px 24px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0;max-width:740px}
+.hero-search{background:rgba(255,255,255,.10);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-lg);padding:20px 24px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0;max-width:900px;width:100%}
 .search-field{position:relative;padding:0 20px;border-right:1px solid rgba(255,255,255,.15)}
 .search-field:first-child{padding-left:0}
 .search-field:last-of-type{border-right:none}
@@ -121,7 +121,11 @@ a{text-decoration:none;color:inherit}
 .search-field input,.search-field select{width:100%;background:none;border:none;outline:none;font-family:var(--font-body);font-size:13px;color:var(--white);padding:0;cursor:pointer}
 .search-field input::placeholder{color:rgba(255,255,255,.55)}
 .search-field select{color:rgba(255,255,255,.8);-webkit-appearance:none;cursor:pointer}
-.search-field select option{background:var(--navy-grad);color:var(--white)}
+.search-field select option{background:var(--white);color:var(--navy)}
+.date-range .date-inputs{display:flex;align-items:center;gap:8px}
+.date-range .date-inputs input{flex:1;min-width:0}
+.date-range .date-sep{color:rgba(255,255,255,.55);font-size:12px}
+.search-field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1)}
 .search-btn-wrap{padding-left:18px;display:flex;align-items:center}
 .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer}
 .hero-scroll span{font-family:var(--font-body);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4)}
@@ -436,9 +440,13 @@ footer{background:var(--navy-grad);padding:clamp(60px,7vw,96px) clamp(20px,5vw,6
         <label>Destination</label>
         <input type="text" placeholder="Where do you dream of going?">
       </div>
-      <div class="search-field">
+      <div class="search-field date-range">
         <label>Travel dates</label>
-        <input type="text" placeholder="Select dates">
+        <div class="date-inputs">
+          <input type="date" aria-label="Start date">
+          <span class="date-sep">–</span>
+          <input type="date" aria-label="End date">
+        </div>
       </div>
       <div class="search-field">
         <label>Travellers</label>
@@ -1018,13 +1026,18 @@ function tick() {
 }
 setInterval(tick, 1000);
 
-// ── Hero search dates placeholder ──
-const dateInput = document.querySelector('.search-field:nth-child(2) input');
-if(dateInput) {
+// ── Hero search dates ──
+const dateInputs = document.querySelectorAll('.date-range input[type="date"]');
+if (dateInputs.length === 2) {
   const today = new Date();
-  const opts = { day:'numeric', month:'short', year:'numeric' };
-  const next = new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000);
-  dateInput.placeholder = today.toLocaleDateString('en-GB',opts) + ' – ' + next.toLocaleDateString('en-GB',opts);
+  const isoToday = today.toISOString().split('T')[0];
+  dateInputs[0].min = isoToday;
+  dateInputs[1].min = isoToday;
+  dateInputs[0].addEventListener('change', () => {
+    if (dateInputs[0].value) {
+      dateInputs[1].min = dateInputs[0].value;
+    }
+  });
 }
 </script>
 </body>
