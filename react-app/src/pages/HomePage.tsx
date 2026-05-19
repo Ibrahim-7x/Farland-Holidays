@@ -124,10 +124,6 @@ export function HomePage() {
             <small>Holidays crafted</small>
           </div>
         </div>
-        <a href="#destinations" className="hero-scroll" aria-label="Scroll to destinations">
-          <span>Scroll</span>
-          <div className="scroll-line"></div>
-        </a>
       </section>
 
       {/* DESTINATIONS */}
