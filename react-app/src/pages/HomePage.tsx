@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DESTINATIONS } from "../data/destinations";
+import { SearchBar } from "../components/SearchBar";
 import "./HomePage.css";
 
 function pad(n: number): string {
@@ -10,8 +11,6 @@ function pad(n: number): string {
 export function HomePage() {
   const [totalSecs, setTotalSecs] = useState(18 * 3600 + 42 * 60 + 7);
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -23,8 +22,6 @@ export function HomePage() {
   const h = Math.floor(totalSecs / 3600);
   const m = Math.floor((totalSecs % 3600) / 60);
   const s = totalSecs % 60;
-
-  const today = new Date().toISOString().split("T")[0];
 
   const toggleWish = (key: string) =>
     setWishlist((w) => ({ ...w, [key]: !w[key] }));
@@ -68,47 +65,7 @@ export function HomePage() {
               View current deals
             </a>
           </div>
-          <form className="hero-search" onSubmit={(e) => e.preventDefault()}>
-            <div className="search-field">
-              <label>Destination</label>
-              <input type="text" placeholder="Where do you dream of going?" />
-            </div>
-            <div className="search-field date-range">
-              <label>Travel dates</label>
-              <div className="date-inputs">
-                <input
-                  type="date"
-                  aria-label="Start date"
-                  min={today}
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                />
-                <span className="date-sep">–</span>
-                <input
-                  type="date"
-                  aria-label="End date"
-                  min={startDate || today}
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="search-field">
-              <label>Travellers</label>
-              <select defaultValue="2 adults">
-                <option>2 adults</option>
-                <option>1 adult</option>
-                <option>2 adults, 1 child</option>
-                <option>2 adults, 2 children</option>
-                <option>Group (6+)</option>
-              </select>
-            </div>
-            <div className="search-btn-wrap">
-              <button type="submit" className="btn btn-gold">
-                Search ↗
-              </button>
-            </div>
-          </form>
+          <SearchBar variant="hero" />
         </div>
         <div className="hero-stats">
           <div className="hero-stat">

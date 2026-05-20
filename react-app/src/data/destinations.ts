@@ -96,11 +96,11 @@ export const DESTINATIONS: Destination[] = [
     components: [
       {
         label: "Flight (to SIN)",
-        details: "Various · Economy Class · Luggage: 1 Piece · From Perth",
+        details: "Economy Class · Luggage: 1 Piece · From Perth",
       },
       {
         label: "Internal Flights",
-        details: "Various · Economy Class · Luggage: 20kg PP · From SIN",
+        details: "Economy Class · Luggage: 20kg PP · From SIN",
       },
       {
         label: "Singapore Hotel",
@@ -187,7 +187,7 @@ export const DESTINATIONS: Destination[] = [
     components: [
       {
         label: "Flight",
-        details: "Various · Economy Class · Luggage: 1 Piece · From Perth",
+        details: "Economy Class · Luggage: 1 Piece · From Perth",
       },
       {
         label: "Dubai Hotel",
@@ -257,7 +257,7 @@ export const DESTINATIONS: Destination[] = [
     components: [
       {
         label: "Flight",
-        details: "Various · Economy Class · Luggage: 1 Piece · From Perth",
+        details: "Economy Class · Luggage: 1 Piece · From Perth",
       },
       {
         label: "Ubud Hotel",
@@ -380,4 +380,34 @@ export const DESTINATIONS: Destination[] = [
 export function getDestination(slug?: string): Destination | undefined {
   if (!slug) return undefined;
   return DESTINATIONS.find((d) => d.slug === slug);
+}
+
+const MONTH_ORDER = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+export function getDestinationMonths(dest: Destination): string[] {
+  if (dest.pricing && dest.pricing.length > 0) {
+    return dest.pricing.map((p) => p.month);
+  }
+  return ["September"];
+}
+
+export function getAllMonths(): string[] {
+  const set = new Set<string>();
+  for (const d of DESTINATIONS) {
+    for (const m of getDestinationMonths(d)) set.add(m);
+  }
+  return Array.from(set).sort(
+    (a, b) => MONTH_ORDER.indexOf(a) - MONTH_ORDER.indexOf(b)
+  );
+}
+
+export function getPriceForMonth(
+  dest: Destination,
+  month: string
+): MonthlyPrice | undefined {
+  if (!dest.pricing) return undefined;
+  return dest.pricing.find((p) => p.month === month);
 }

@@ -29,9 +29,6 @@ export function AboutPage() {
             <Link to="/contact#inquiry-section" className="btn btn-gold">
               Start Planning
             </Link>
-            <a href="#team" className="btn btn-outline-white">
-              Meet Our Team
-            </a>
           </div>
         </div>
       </section>
@@ -92,29 +89,63 @@ export function AboutPage() {
         <div className="about-container">
           <div className="section-eyebrow">What We Believe</div>
           <h2 className="section-title">Our Values Shape Every Itinerary</h2>
+          <p className="section-sub">
+            We are a tour operator first and a travel agency second. These six
+            principles guide how we design routes, choose partners, and look after
+            you on the road.
+          </p>
           <div className="values-grid">
             <div className="value-card">
               <div className="value-icon">01</div>
-              <h4>Thoughtful Design</h4>
+              <h4>Tailor-Made, Never Templated</h4>
               <p>
-                We build each journey from scratch to match your pace, your style, and
-                your sense of wonder.
+                No two travellers want the same trip. Every itinerary is built from
+                scratch around your pace, interests, and bucket-list moments — not
+                pulled from a brochure.
               </p>
             </div>
             <div className="value-card">
               <div className="value-icon">02</div>
-              <h4>Local Partnerships</h4>
+              <h4>Destination Expertise</h4>
               <p>
-                Our network of trusted hosts and guides opens doors to private experiences
-                and hidden gems.
+                Our specialists have lived in or repeatedly travelled to the regions
+                they design — Singapore, Bali, Dubai, and the Holy Cities included.
+                You get first-hand knowledge, not a desk search.
               </p>
             </div>
             <div className="value-card">
               <div className="value-icon">03</div>
-              <h4>Service With Care</h4>
+              <h4>Hand-Picked Partners</h4>
               <p>
-                We are responsive, proactive, and precise, with 24/7 support when you
-                travel.
+                Hotels, private guides, and ground operators are personally vetted.
+                If we wouldn't book it for our own family, it doesn't make our
+                itineraries.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-icon">04</div>
+              <h4>Financially Protected</h4>
+              <p>
+                Fully ATOL and ABTA bonded. Every penny you pay is safeguarded from
+                deposit to return flight, so you can plan with complete confidence.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-icon">05</div>
+              <h4>Responsible Travel</h4>
+              <p>
+                We offset carbon on every booking, partner with conservation-led
+                lodges, and prioritise local employment — because the places we love
+                deserve to be looked after.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-icon">06</div>
+              <h4>24/7 On-Trip Support</h4>
+              <p>
+                One number, day or night, wherever you are in the world. Missed
+                connection, changed plans, or just a question — a real human
+                specialist is one call away.
               </p>
             </div>
           </div>
@@ -128,88 +159,21 @@ export function AboutPage() {
           <h2 className="section-title">Milestones That Shaped Farland</h2>
           <div className="timeline">
             <div className="timeline-item">
-              <div className="timeline-year">2008</div>
+              <div className="timeline-year">2013</div>
               <div className="timeline-text">
-                Farland is founded with a focus on bespoke luxury travel and boutique
-                service.
+                Farland started it services in United Kingdome.
               </div>
             </div>
             <div className="timeline-item">
-              <div className="timeline-year">2015</div>
+              <div className="timeline-year">2024</div>
               <div className="timeline-text">
-                Expanded into multi-continent journeys and private expedition partnerships.
+                Farland joined the USA market.
               </div>
             </div>
             <div className="timeline-item">
-              <div className="timeline-year">2021</div>
+              <div className="timeline-year">2025</div>
               <div className="timeline-text">
-                Introduced dedicated in-trip support and a global emergency response desk.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM */}
-      <section
-        className="about-section reveal"
-        id="team"
-        style={{ background: "var(--ivory-mid)" }}
-      >
-        <div className="about-container">
-          <div className="section-eyebrow">Meet The Team</div>
-          <h2 className="section-title">Specialists Who Know The Details</h2>
-          <div className="team-grid">
-            <div className="team-card">
-              <div className="team-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80"
-                  alt="Alicia Moore"
-                />
-              </div>
-              <div className="team-body">
-                <h5>Alicia Moore</h5>
-                <span>Head of Experiences</span>
-                <p>Designs immersive journeys across Africa and the Indian Ocean.</p>
-              </div>
-            </div>
-            <div className="team-card">
-              <div className="team-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80"
-                  alt="Daniel Wright"
-                />
-              </div>
-              <div className="team-body">
-                <h5>Daniel Wright</h5>
-                <span>Senior Travel Designer</span>
-                <p>Specialist in Asia, private villas, and multi-stop cultural tours.</p>
-              </div>
-            </div>
-            <div className="team-card">
-              <div className="team-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=600&q=80"
-                  alt="Priya Shah"
-                />
-              </div>
-              <div className="team-body">
-                <h5>Priya Shah</h5>
-                <span>Concierge Lead</span>
-                <p>Coordinates on-trip services and ensures every detail is seamless.</p>
-              </div>
-            </div>
-            <div className="team-card">
-              <div className="team-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80"
-                  alt="Morgan Lee"
-                />
-              </div>
-              <div className="team-body">
-                <h5>Morgan Lee</h5>
-                <span>Partnerships Manager</span>
-                <p>Works with boutique hotels and private guides worldwide.</p>
+                Farland successfully expanded its operations in UAE.
               </div>
             </div>
           </div>

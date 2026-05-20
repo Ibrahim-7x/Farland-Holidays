@@ -6,6 +6,7 @@ import { DestinationsPage } from "./pages/DestinationsPage";
 import { DestinationDetailPage } from "./pages/DestinationDetailPage";
 import { DealsPage } from "./pages/DealsPage";
 import { ContactPage } from "./pages/ContactPage";
+import { SearchResultsPage } from "./pages/SearchResultsPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           />
           <Route path="/deals" element={<DealsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/search-results" element={<SearchResultsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

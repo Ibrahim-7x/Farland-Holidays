@@ -21,15 +21,6 @@ const TRIP_TYPES = [
   "🌿 Eco",
 ];
 
-const PREFS = [
-  { icon: "🏖", text: "Beach & Islands" },
-  { icon: "🦁", text: "Safari" },
-  { icon: "💍", text: "Honeymoon" },
-  { icon: "⛰", text: "Adventure" },
-  { icon: "🏛", text: "Culture" },
-  { icon: "🌿", text: "Eco travel" },
-];
-
 const HOURS = [
   { day: "Monday", time: "9:00am – 7:00pm" },
   { day: "Tuesday", time: "9:00am – 7:00pm" },
@@ -60,9 +51,8 @@ export function ContactPage() {
   const [tripTypes, setTripTypes] = useState<Set<string>>(new Set(["💍 Honeymoon"]));
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
+  const [subscribe, setSubscribe] = useState(true);
   const [activeChannel, setActiveChannel] = useState("inquiry-section");
-  const [nlPrefs, setNlPrefs] = useState<Set<string>>(new Set(["Beach & Islands"]));
-  const [nlSuccess, setNlSuccess] = useState(false);
 
   const today = new Date();
   const todayIdx = today.getDay() === 0 ? 6 : today.getDay() - 1;
@@ -80,14 +70,6 @@ export function ContactPage() {
 
   const toggleType = (t: string) =>
     setTripTypes((p) => {
-      const n = new Set(p);
-      if (n.has(t)) n.delete(t);
-      else n.add(t);
-      return n;
-    });
-
-  const togglePref = (t: string) =>
-    setNlPrefs((p) => {
       const n = new Set(p);
       if (n.has(t)) n.delete(t);
       else n.add(t);
@@ -159,13 +141,6 @@ export function ContactPage() {
             onClick={() => scrollToSection("inquiry-section")}
           >
             <span className="ct-icon">📋</span> Full Enquiry
-          </button>
-          <button
-            type="button"
-            className={`channel-tab ${activeChannel === "newsletter-section" ? "active" : ""}`}
-            onClick={() => scrollToSection("newsletter-section")}
-          >
-            <span className="ct-icon">✉</span> Newsletter
           </button>
           <button
             type="button"
@@ -504,6 +479,18 @@ export function ContactPage() {
                   <div className="consent-row">
                     <input
                       type="checkbox"
+                      id="inq-subscribe"
+                      checked={subscribe}
+                      onChange={(e) => setSubscribe(e.target.checked)}
+                    />
+                    <label htmlFor="inq-subscribe">
+                      ✉ Yes, send me Farland's monthly travel inspiration and
+                      subscriber-only deals. Unsubscribe any time.
+                    </label>
+                  </div>
+                  <div className="consent-row">
+                    <input
+                      type="checkbox"
                       id="inq-consent"
                       checked={consent}
                       onChange={(e) => setConsent(e.target.checked)}
@@ -546,8 +533,14 @@ export function ContactPage() {
                   <h3>Enquiry Sent!</h3>
                   <p>
                     Thank you — your enquiry has been received. A member of our team will
-                    be in touch within 2 working hours. In the meantime, why not explore
-                    our{" "}
+                    be in touch within 2 working hours.
+                    {subscribe && (
+                      <>
+                        {" "}You've also been added to our travel inspiration list —
+                        your first edition arrives Thursday.
+                      </>
+                    )}{" "}
+                    In the meantime, why not explore our{" "}
                     <Link to="/deals" style={{ color: "var(--gold)" }}>
                       latest deals
                     </Link>
@@ -660,164 +653,9 @@ export function ContactPage() {
 
         <div className="section-divider"></div>
 
-        {/* NEWSLETTER */}
-        <section id="newsletter-section" className="reveal">
-          <div className="cp-section-eyebrow">03 — Stay inspired</div>
-          <h2 className="cp-section-title">Join 45,000+ Travellers</h2>
-          <p className="cp-section-sub">
-            Receive exclusive deals, destination guides, and travel inspiration before
-            anyone else — straight to your inbox.
-          </p>
-
-          <div className="nl-card">
-            <div className="nl-left">
-              <img
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
-                alt="Travel inspiration"
-              />
-              <div className="nl-left-overlay"></div>
-              <div className="nl-left-content">
-                <h3>
-                  Curated Travel
-                  <br />
-                  Inspiration, Weekly
-                </h3>
-                <p>
-                  Our editors handpick the world's most extraordinary destinations and
-                  bring them to your inbox every Thursday.
-                </p>
-                <div className="nl-perks">
-                  <div className="nl-perk">48-hour early access to flash deals</div>
-                  <div className="nl-perk">Monthly destination deep-dives</div>
-                  <div className="nl-perk">Exclusive subscriber-only offers</div>
-                  <div className="nl-perk">Expert travel tips &amp; packing guides</div>
-                </div>
-              </div>
-            </div>
-
-            <form
-              className="nl-right"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setNlSuccess(true);
-              }}
-            >
-              {nlSuccess ? (
-                <div className="success-overlay">
-                  <div className="success-check">🎉</div>
-                  <h3>You're in!</h3>
-                  <p>
-                    Welcome to the Farland community. Your first travel inspiration will
-                    arrive this Thursday.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <h3>Subscribe</h3>
-                  <p>
-                    Tell us a little about your travel dreams and we'll curate your
-                    experience from day one.
-                  </p>
-                  <div className="form-row-2">
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="nl-first">First name</label>
-                      <input
-                        className="form-input"
-                        id="nl-first"
-                        type="text"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="nl-email">Email address *</label>
-                      <input
-                        className="form-input"
-                        id="nl-email"
-                        type="email"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" style={{ marginBottom: 10 }}>
-                      I'm most interested in…
-                    </label>
-                    <div className="pref-grid">
-                      {PREFS.map((p) => (
-                        <label
-                          key={p.text}
-                          className={`pref-chip ${nlPrefs.has(p.text) ? "on" : ""}`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={nlPrefs.has(p.text)}
-                            onChange={() => togglePref(p.text)}
-                          />
-                          <span className="pref-icon">{p.icon}</span>
-                          <span className="pref-text">{p.text}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="nl-freq">
-                      How often do you travel?
-                    </label>
-                    <select
-                      className="form-select"
-                      id="nl-freq"
-                      defaultValue="Twice a year"
-                    >
-                      <option>Once a year</option>
-                      <option>Twice a year</option>
-                      <option>3+ times a year</option>
-                      <option>I'm a frequent traveller</option>
-                    </select>
-                  </div>
-                  <div className="consent-row">
-                    <input type="checkbox" id="nl-consent" defaultChecked />
-                    <label htmlFor="nl-consent">
-                      I'd love to receive Farland's travel inspiration, deals, and news.
-                      Unsubscribe any time. <a href="#privacy">Privacy policy</a>.
-                    </label>
-                  </div>
-                  <button type="submit" className="btn-submit btn-gold-full">
-                    ✦ Subscribe Now — It's Free
-                  </button>
-                  <div className="sub-proof">
-                    <div className="sub-avatars">
-                      <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&q=70"
-                        alt=""
-                      />
-                      <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=70"
-                        alt=""
-                      />
-                      <img
-                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&q=70"
-                        alt=""
-                      />
-                    </div>
-                    <div className="sub-proof-text">
-                      <strong>45,200+</strong> subscribers already inspired
-                      <br />
-                      <span style={{ fontSize: 11, color: "var(--stone)" }}>
-                        No spam · Unsubscribe any time
-                      </span>
-                    </div>
-                  </div>
-                </>
-              )}
-            </form>
-          </div>
-        </section>
-
-        <div className="section-divider"></div>
-
         {/* WHATSAPP */}
         <section id="whatsapp-section" className="reveal">
-          <div className="cp-section-eyebrow">04 — Instant messaging</div>
+          <div className="cp-section-eyebrow">03 — Instant messaging</div>
           <h2 className="cp-section-title">Chat on WhatsApp</h2>
           <p className="cp-section-sub">
             Prefer to chat? Our specialists are on WhatsApp — just tap to start a
