@@ -594,33 +594,6 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="expert-card reveal reveal-delay-2">
-              <div className="expert-profile">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=75"
-                  alt="Emma Clarke"
-                  className="expert-avatar"
-                />
-                <div className="expert-info">
-                  <h4>Emma Clarke</h4>
-                  <p>Senior Travel Specialist</p>
-                </div>
-              </div>
-              <div className="expert-status">
-                <div className="status-dot"></div>Available now · Online
-              </div>
-              <div className="expert-quote">
-                "Every great journey starts with a single conversation. Tell me your dream
-                — I'll make it happen."
-              </div>
-              <div className="expert-specialisms">
-                <span className="spec-tag">Maldives</span>
-                <span className="spec-tag">Indian Ocean</span>
-                <span className="spec-tag">Southeast Asia</span>
-                <span className="spec-tag">Honeymoons</span>
-              </div>
-            </div>
-
             <div className="hours-card reveal reveal-delay-3">
               <div className="hours-header">
                 <h4>Opening Hours</h4>

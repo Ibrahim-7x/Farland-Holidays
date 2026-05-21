@@ -317,17 +317,6 @@ export function DestinationDetailPage() {
                   </span>
                 </div>
 
-                <div className="inquiry-expert">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=70"
-                    alt="Specialist"
-                    className="expert-avatar"
-                  />
-                  <div className="expert-info">
-                    <p>Emma Clarke</p>
-                    <small>Travel Specialist · 8 years experience</small>
-                  </div>
-                </div>
               </div>
             </form>
           </div>

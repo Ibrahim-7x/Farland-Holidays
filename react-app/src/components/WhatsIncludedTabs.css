@@ -40,6 +40,101 @@
 }
 .wit-from-tag span{margin-left:2px}
 
+/* PER-SECTION SLIDESHOW */
+.wit-slideshow{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.wit-slide-stage{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  background:var(--ivory);
+  border:1px solid var(--ivory-mid);
+  box-shadow:var(--shadow-md);
+}
+.wit-slide{
+  position:absolute;
+  inset:0;
+  margin:0;
+  opacity:0;
+  transition:opacity .45s var(--ease);
+  pointer-events:none;
+}
+.wit-slide.active{opacity:1;pointer-events:auto}
+.wit-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.wit-slide-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(13,26,74,.08);
+  color:var(--navy);
+  font-size:26px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:2;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  transition:background .2s var(--ease),transform .2s var(--ease);
+}
+.wit-slide-arrow:hover{background:var(--white);transform:translateY(-50%) scale(1.06)}
+.wit-slide-arrow:active{transform:translateY(-50%) scale(.97)}
+.wit-slide-arrow.prev{left:14px}
+.wit-slide-arrow.next{right:14px}
+.wit-slide-counter{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  z-index:2;
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  color:var(--white);
+  background:rgba(0,0,0,.5);
+  padding:4px 10px;
+  border-radius:var(--r-pill);
+  backdrop-filter:blur(6px);
+}
+.wit-slide-dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.wit-slide-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--ivory-mid);
+  border:none;
+  padding:0;
+  cursor:pointer;
+  transition:background .2s var(--ease),width .2s var(--ease);
+}
+.wit-slide-dot:hover{background:var(--gold-light)}
+.wit-slide-dot.active{background:var(--gold);width:22px;border-radius:5px}
+@media(max-width:600px){
+  .wit-slide-arrow{width:36px;height:36px;font-size:22px}
+  .wit-slide-arrow.prev{left:8px}
+  .wit-slide-arrow.next{right:8px}
+}
+
 /* PACKAGE PICKER (Makkah only) */
 .wit-pkg-picker{
   padding:18px 24px 20px;

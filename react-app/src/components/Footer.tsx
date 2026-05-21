@@ -28,7 +28,7 @@ export function Footer() {
               <li><Link to="/destinations/singapore-bali">Singapore &amp; Bali</Link></li>
               <li><Link to="/destinations/dubai-bali">Dubai &amp; Bali</Link></li>
               <li><Link to="/destinations/bali-long-stay">Bali Long Stay</Link></li>
-              <li><Link to="/destinations/makkah-madinah">Makkah &amp; Madinah</Link></li>
+              {/* <li><Link to="/destinations/makkah-madinah">Makkah &amp; Madinah</Link></li> */}
               <li><Link to="/destinations">All destinations</Link></li>
               <li><Link to="/deals">Current deals</Link></li>
             </ul>

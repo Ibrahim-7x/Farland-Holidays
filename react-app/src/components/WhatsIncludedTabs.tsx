@@ -9,10 +9,13 @@ type SectionItem = {
   lines?: string[];
 };
 
+type SectionImage = { src: string; alt: string };
+
 type Section = {
   icon: string;
   title: string;
   items: SectionItem[];
+  images?: SectionImage[];
 };
 
 type Tab = {
@@ -27,6 +30,9 @@ type Props = {
   selectedPackageIndex?: number;
   onPackageChange?: (index: number) => void;
 };
+
+const SG_BALI_IMG = "/singapour-bali";
+const DUBAI_BALI_IMG = "/dubai-bali";
 
 function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
   switch (dest.slug) {
@@ -60,17 +66,30 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   pills: ["Superior Room", "Room Only", "04 Nights"],
                 },
               ],
+              images: [
+                { src: `${SG_BALI_IMG}/singapore-bali-lobby.jpg`, alt: "Hotel lobby" },
+                { src: `${SG_BALI_IMG}/singapore-bali-hotel.jpg`, alt: "Hotel exterior" },
+                { src: `${SG_BALI_IMG}/singapore-bali-bed-1.jpg`, alt: "Superior Room" },
+                { src: `${SG_BALI_IMG}/singapore-bali-bed-2.jpg`, alt: "Superior Room — twin layout" },
+              ],
             },
             {
               icon: "🎯",
               title: "Excursions",
               items: [
                 {
-                  lines: [
-                    "Marina Bay Sands SkyPark Deck Tickets",
+                  pills: [
+                    "Marina Bay",
+                    "Deck Tickets",
+                    "Sands SkyPark",
                     "Gardens by the Bay",
                   ],
                 },
+              ],
+              images: [
+                { src: `${SG_BALI_IMG}/singapore-bali-exc.jpg`, alt: "Excursion" },
+                { src: `${SG_BALI_IMG}/singapore-bali-exc-2.jpg`, alt: "Excursion" },
+                { src: `${SG_BALI_IMG}/singapore-bali-exc-3.jpg`, alt: "Excursion" },
               ],
             },
           ],
@@ -89,6 +108,12 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   pills: ["Studio Room", "Breakfast", "07 Nights"],
                 },
               ],
+              images: [
+                { src: `${SG_BALI_IMG}/bali-hotel.jpg`, alt: "Hotel exterior" },
+                { src: `${SG_BALI_IMG}/bali-deck.jpg`, alt: "Pool deck" },
+                { src: `${SG_BALI_IMG}/bali-room-studio.jpg`, alt: "Studio Room" },
+                { src: `${SG_BALI_IMG}/bali-studio-2.jpg`, alt: "Studio Room — alternate view" },
+              ],
             },
             {
               icon: "🎯",
@@ -101,6 +126,10 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   ],
                   pills: ["Private guide + transfers included"],
                 },
+              ],
+              images: [
+                { src: `${SG_BALI_IMG}/bali-exc.jpg`, alt: "Excursion" },
+                { src: `${SG_BALI_IMG}/bali-exc-2.jpg`, alt: "Excursion" },
               ],
             },
             {
@@ -137,6 +166,13 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   pills: ["Classic Room", "Breakfast", "03 Nights"],
                 },
               ],
+              images: [
+                { src: `${DUBAI_BALI_IMG}/dubai-hotel.jpg`, alt: "Hotel exterior" },
+                { src: `${DUBAI_BALI_IMG}/dubai-hotel-2.jpg`, alt: "Hotel exterior" },
+                { src: `${DUBAI_BALI_IMG}/dubai-hotel-3.jpg`, alt: "Hotel interior" },
+                { src: `${DUBAI_BALI_IMG}/dubai-room.jpg`, alt: "Classic Room" },
+                { src: `${DUBAI_BALI_IMG}/dubai-room-2.jpg`, alt: "Classic Room — alternate view" },
+              ],
             },
           ],
         },
@@ -157,6 +193,12 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                     "12 Days / 11 Nights",
                   ],
                 },
+              ],
+              images: [
+                { src: `${DUBAI_BALI_IMG}/bali-gili-hotel.jpg`, alt: "Bali & Gili tour hotel" },
+                { src: `${DUBAI_BALI_IMG}/bali-gili-hotel-2.jpg`, alt: "Bali & Gili tour hotel" },
+                { src: `${DUBAI_BALI_IMG}/bali-gili-hotel-3.jpg`, alt: "Bali & Gili tour hotel" },
+                { src: `${DUBAI_BALI_IMG}/bali-gili-hotel-4.jpg`, alt: "Bali & Gili tour hotel" },
               ],
             },
             {
@@ -309,6 +351,77 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
   }
 }
 
+function SectionSlideshow({
+  images,
+  sectionId,
+}: {
+  images: SectionImage[];
+  sectionId: string;
+}) {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    setIdx(0);
+  }, [sectionId]);
+
+  const total = images.length;
+  const go = (next: number) => setIdx(((next % total) + total) % total);
+
+  return (
+    <div className="wit-slideshow">
+      <div className="wit-slide-stage">
+        {images.map((img, i) => (
+          <figure
+            key={img.src}
+            className={`wit-slide ${i === idx ? "active" : ""}`}
+            aria-hidden={i !== idx}
+          >
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </figure>
+        ))}
+        {total > 1 && (
+          <>
+            <button
+              type="button"
+              className="wit-slide-arrow prev"
+              onClick={() => go(idx - 1)}
+              aria-label="Previous photo"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              className="wit-slide-arrow next"
+              onClick={() => go(idx + 1)}
+              aria-label="Next photo"
+            >
+              ›
+            </button>
+            <div className="wit-slide-counter">
+              {idx + 1} / {total}
+            </div>
+          </>
+        )}
+      </div>
+      {total > 1 && (
+        <div className="wit-slide-dots" role="tablist">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              role="tab"
+              aria-selected={i === idx}
+              aria-label={`Photo ${i + 1}`}
+              className={`wit-slide-dot ${i === idx ? "active" : ""}`}
+              onClick={() => setIdx(i)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function WhatsIncludedTabs({
   destination,
   selectedPackageIndex,
@@ -446,6 +559,9 @@ export function WhatsIncludedTabs({
                 </div>
               ))}
             </div>
+            {s.images && s.images.length > 0 && (
+              <SectionSlideshow images={s.images} sectionId={`${active.id}-${i}`} />
+            )}
           </div>
         ))}
       </div>

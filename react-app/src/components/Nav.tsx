@@ -44,8 +44,23 @@ export function Nav() {
         </Link>
         <ul className="nav-links" id="primary-nav">
           <li>
-            <NavLink to="/" end className={linkClass} onClick={closeMenu}>
-              Home
+            <NavLink to="/" end className={linkClass} onClick={closeMenu} aria-label="Home">
+              <svg
+                className="nav-home-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 11.5 12 4l9 7.5" />
+                <path d="M5 10.5V20h4.5v-5h5v5H19V10.5" />
+              </svg>
             </NavLink>
           </li>
           <li>
@@ -70,12 +85,6 @@ export function Nav() {
           </li>
         </ul>
         <div className="nav-right">
-          <button type="button" className="nav-icon" title="Search" aria-label="Search">
-            ⌕
-          </button>
-          <button type="button" className="nav-icon" title="Wishlist" aria-label="Wishlist">
-            ♡
-          </button>
           <Link
             to="/contact#inquiry-section"
             className="btn btn-gold"

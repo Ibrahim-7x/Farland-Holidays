@@ -52,10 +52,8 @@ export const DESTINATIONS: Destination[] = [
     subtitle: "Twin Capitals & Tropical Beaches",
     region: "Southeast Asia",
     regionLabel: "Singapore · Indonesia",
-    image:
-      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=85",
+    image: "/singapour-bali/singapore-bali-exc.jpg",
+    heroImage: "/singapour-bali/singapore-bali-exc.jpg",
     description:
       "Begin with four sparkling nights in Singapore — Marina Bay Sands SkyPark and Gardens by the Bay included — then unwind for seven nights in Seminyak, Bali with private snorkelling and Ubud excursions.",
     tagline: "City lights meet island stillness — 11 nights in two of Asia's finest.",
@@ -108,7 +106,7 @@ export const DESTINATIONS: Destination[] = [
       },
       {
         label: "Singapore Excursions",
-        details: "Marina Bay Sands SkyPark Deck Tickets & Gardens by the Bay",
+        details: "Marina Bay · Sands SkyPark · Deck Tickets · Gardens by the Bay",
       },
       {
         label: "Bali Hotel (Seminyak)",
@@ -118,7 +116,7 @@ export const DESTINATIONS: Destination[] = [
       {
         label: "Bali Excursions",
         details:
-          "Snorkelling to the Blue Lagoon Full-Day Tour & Ubud Highlights Private Tour (Private guide + transfers included)",
+          "Snorkelling to the Blue Lagoon Full-Day Tour · Ubud Highlights Private Tour (Private guide + transfers included)",
       },
       {
         label: "Transfers",
@@ -294,6 +292,7 @@ export const DESTINATIONS: Destination[] = [
     ],
     transfersIncluded: "All ground return transfers included",
   },
+  /* Temporarily hidden — Makkah & Madinah package
   {
     slug: "makkah-madinah",
     name: "Makkah & Madinah",
@@ -375,6 +374,7 @@ export const DESTINATIONS: Destination[] = [
     packagesNote: "All three packages depart in September.",
     transfersIncluded: "Group transfers between Makkah and Madinah included",
   },
+  */
 ];
 
 export function getDestination(slug?: string): Destination | undefined {
