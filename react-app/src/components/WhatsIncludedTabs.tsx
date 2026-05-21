@@ -33,6 +33,7 @@ type Props = {
 
 const SG_BALI_IMG = "/singapour-bali";
 const DUBAI_BALI_IMG = "/dubai-bali";
+const BALI_LONG_IMG = "/bali-long";
 
 function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
   switch (dest.slug) {
@@ -235,6 +236,11 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   pills: ["Superior Room", "Breakfast", "05 Nights"],
                 },
               ],
+              images: [
+                { src: `${BALI_LONG_IMG}/ashoka-tree-resort.jpg`, alt: "Ashoka Tree Resort" },
+                { src: `${BALI_LONG_IMG}/ashoka-tree-resort-room.jpg`, alt: "Ashoka Tree Resort room" },
+                { src: `${BALI_LONG_IMG}/ashoka-tree-resort-room-2.jpg`, alt: "Ashoka Tree Resort room - photo 2" },
+              ],
             },
           ],
         },
@@ -251,6 +257,12 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   primary: "Mercure Bali Nusa Dua",
                   pills: ["Superior Garden View", "Breakfast", "05 Nights"],
                 },
+              ],
+              images: [
+                { src: `${BALI_LONG_IMG}/bali-nusa-dua.jpg`, alt: "Mercure Bali Nusa Dua" },
+                { src: `${BALI_LONG_IMG}/bali-nusa-dua-2.jpg`, alt: "Mercure Bali Nusa Dua - photo 2" },
+                { src: `${BALI_LONG_IMG}/bali-nusa-dua-3.jpg`, alt: "Mercure Bali Nusa Dua - photo 3" },
+                { src: `${BALI_LONG_IMG}/bali-nusa-dua-4.jpg`, alt: "Mercure Bali Nusa Dua - photo 4" },
               ],
             },
           ],
@@ -269,6 +281,12 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   pills: ["Superior Suite", "Breakfast", "03 Nights"],
                 },
               ],
+              images: [
+                { src: `${BALI_LONG_IMG}/bali-sages.jpg`, alt: "Hotel Sages" },
+                { src: `${BALI_LONG_IMG}/bali-sages-1.jpg`, alt: "Hotel Sages - photo 2" },
+                { src: `${BALI_LONG_IMG}/bali-sages-2.jpg`, alt: "Hotel Sages - photo 3" },
+                { src: `${BALI_LONG_IMG}/bali-sages-3.jpg`, alt: "Hotel Sages - photo 4" },
+              ],
             },
           ],
         },
@@ -285,6 +303,12 @@ function buildTabs(dest: Destination, pkgIdx: number): Tab[] {
                   primary: "Paragon Hotel Seminyak",
                   pills: ["Deluxe Balcony Room", "Breakfast", "07 Nights"],
                 },
+              ],
+              images: [
+                { src: `${BALI_LONG_IMG}/bali-seminyak.jpg`, alt: "Paragon Hotel Seminyak" },
+                { src: `${BALI_LONG_IMG}/bali-seminyak-1.jpg`, alt: "Paragon Hotel Seminyak - photo 2" },
+                { src: `${BALI_LONG_IMG}/bali-seminyak-2.jpg`, alt: "Paragon Hotel Seminyak - photo 3" },
+                { src: `${BALI_LONG_IMG}/bali-seminyak-3.jpg`, alt: "Paragon Hotel Seminyak - photo 4" },
               ],
             },
             {
