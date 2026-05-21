@@ -88,7 +88,6 @@ export function HomePage() {
         <div className="destinations-inner">
           <div className="destinations-header">
             <div>
-              <div className="section-eyebrow">02 — Where to go</div>
               <h2 className="section-title">Curated Destinations</h2>
               <p className="section-sub">
                 Four hand-selected journeys, each fully costed and ready to book.
@@ -208,7 +207,6 @@ export function HomePage() {
         <div className="deals-inner">
           <div className="deals-header">
             <div>
-              <div className="section-eyebrow">03 — Limited time</div>
               <h2 className="section-title">Exceptional Deals</h2>
               <p className="section-sub" style={{ color: "rgba(255,255,255,.45)" }}>
                 Live published prices on our four signature journeys.
@@ -297,7 +295,6 @@ export function HomePage() {
               </div>
             </div>
             <div className="reveal reveal-delay-2">
-              <div className="section-eyebrow">04 — Why us</div>
               <h2 className="section-title">
                 Travel Shouldn't
                 <br />
@@ -369,7 +366,6 @@ export function HomePage() {
       <section id="testimonials">
         <div className="testimonials-inner">
           <div className="testimonials-header">
-            <div className="section-eyebrow">05 — Reviews</div>
             <h2 className="section-title" style={{ textAlign: "center" }}>
               Heard from Our Travellers
             </h2>
@@ -483,9 +479,6 @@ export function HomePage() {
           </div>
           <div className="cta-overlay"></div>
           <div className="cta-content">
-            <div className="section-eyebrow" style={{ color: "var(--gold)" }}>
-              06 — Start planning
-            </div>
             <h2 className="section-title" style={{ fontSize: "clamp(34px,5vw,62px)" }}>
               Plan Your Dream
               <br />
@@ -517,7 +510,6 @@ export function HomePage() {
       <section id="newsletter">
         <div className="newsletter-inner">
           <div className="reveal">
-            <div className="section-eyebrow">07 — Stay inspired</div>
             <h2 className="section-title">
               Travel Inspiration,
               <br />

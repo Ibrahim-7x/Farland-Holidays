@@ -106,7 +106,6 @@ export function DestinationDetailPage() {
           <div>
             {/* OVERVIEW */}
             <section className="dd-section reveal" id="overview">
-              <div className="section-eyebrow">01 — Overview</div>
               <h2 className="section-title">{destination.subtitle}</h2>
               <p className="section-body">{destination.description}</p>
 
@@ -127,7 +126,6 @@ export function DestinationDetailPage() {
 
             {/* PACKAGE DETAILS */}
             <section className="dd-section reveal" id="package-details">
-              <div className="section-eyebrow">02 — What's included</div>
               <h2 className="section-title">Package Details</h2>
               <p className="section-body">
                 Every component below is included in your published price. Customise any
@@ -144,10 +142,9 @@ export function DestinationDetailPage() {
             {/* MONTHLY PRICING */}
             {destination.pricing && destination.pricing.length > 0 && (
               <section className="dd-section reveal pricing-section" id="pricing">
-                <div className="section-eyebrow">03 — Pricing per departure</div>
                 <div className="pricing-header">
                   <div>
-                    <h3>Choose your month</h3>
+                    <h3>Pricing per month</h3>
                     <p>
                       All prices are per person. Speak to our specialists to confirm
                       availability and lock in your preferred departure date.
@@ -177,7 +174,6 @@ export function DestinationDetailPage() {
 
             {/* RELATED */}
             <section className="dd-section reveal">
-              <div className="section-eyebrow">04 — You may also love</div>
               <h2 className="section-title">More from our collection</h2>
               <div className="related-grid">
                 {related.map((r) => (

@@ -8,7 +8,9 @@ const CATEGORIES = [
   { value: "beach", label: "🏖 Beach & Islands" },
   { value: "culture", label: "🏛 Cultural & Heritage" },
   { value: "family", label: "👨‍👩‍👧 Family" },
-  { value: "spiritual", label: "🕌 Spiritual" },
+  { value: "honeymoon", label: "💍 Honeymoon" },
+  { value: "safari", label: "🦁 Safari" },
+  { value: "cruise", label: "🛳 Cruise" },
 ];
 
 const pad = (n: number) => String(n).padStart(2, "0");
