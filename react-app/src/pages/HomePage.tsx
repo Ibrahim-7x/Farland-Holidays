@@ -335,7 +335,7 @@ export function HomePage() {
                 <div className="why-feature">
                   <div className="why-icon">🛡</div>
                   <div className="why-feature-text">
-                    <h4>Fully ATOL protected</h4>
+                    <h4>Fully protected</h4>
                     <p>Every penny is fully financially protected. Always.</p>
                   </div>
                 </div>
@@ -461,8 +461,7 @@ export function HomePage() {
             </div>
             <div className="trust-divider"></div>
             <div className="trust-item">
-              <strong>ATOL</strong>
-              <span>Fully protected</span>
+              <strong>Fully protected</strong>
             </div>
           </div>
         </div>
@@ -492,7 +491,7 @@ export function HomePage() {
               <span className="cta-feature">No booking fees</span>
               <span className="cta-feature">Price match guarantee</span>
               <span className="cta-feature">Expert consultation included</span>
-              <span className="cta-feature">ATOL protected</span>
+              <span className="cta-feature">Fullyprotected</span>
             </div>
             <div className="cta-btns">
               <Link to="/contact#inquiry-section" className="btn btn-gold">

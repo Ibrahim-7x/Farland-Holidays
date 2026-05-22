@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { DESTINATIONS } from "../data/destinations";
 import "./DealsPage.css";
 
@@ -22,12 +22,30 @@ function parsePrice(s: string): number {
 type SortValue = "popular" | "price-asc" | "price-desc" | "alpha";
 
 export function DealsPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCat = (searchParams.get("cat") ?? "all").toLowerCase();
+
   const [secs, setSecs] = useState(18 * 3600 + 42 * 60 + 7);
-  const [activeCat, setActiveCat] = useState("all");
+  const [activeCat, setActiveCat] = useState(initialCat);
   const [sort, setSort] = useState<SortValue>("popular");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [wishlist, setWishlist] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState<{ title: string } | null>(null);
+
+  // Sync category state ↔ URL query param so nav-dropdown links land filtered
+  useEffect(() => {
+    const fromUrl = (searchParams.get("cat") ?? "all").toLowerCase();
+    if (fromUrl !== activeCat) setActiveCat(fromUrl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  const selectCategory = (value: string) => {
+    setActiveCat(value);
+    const next = new URLSearchParams(searchParams);
+    if (value === "all") next.delete("cat");
+    else next.set("cat", value);
+    setSearchParams(next, { replace: true });
+  };
 
   useEffect(() => {
     const id = setInterval(() => setSecs((s) => Math.max(0, s - 1)), 1000);
@@ -104,7 +122,7 @@ export function DealsPage() {
             </div>
             <div className="dp-hero-meta-item">
               <div className="dp-hero-meta-dot"></div>
-              <strong>ATOL</strong> fully protected
+              <strong>fully protected</strong>
             </div>
             <div className="dp-hero-meta-item">
               <div className="dp-hero-meta-dot"></div>No <strong>booking fees</strong>
@@ -152,7 +170,7 @@ export function DealsPage() {
               type="button"
               key={c.value}
               className={`cat-tab ${activeCat === c.value ? "active" : ""}`}
-              onClick={() => setActiveCat(c.value)}
+              onClick={() => selectCategory(c.value)}
             >
               {c.label}
             </button>
@@ -166,7 +184,7 @@ export function DealsPage() {
           <div className="trust-item">
             <span className="trust-icon">🔒</span>
             <div>
-              <strong>ATOL Protected</strong>Every booking guaranteed
+              <strong>Fully Protected</strong>Every booking guaranteed
             </div>
           </div>
           <div className="trust-item">

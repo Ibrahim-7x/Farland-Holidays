@@ -126,7 +126,7 @@ export function AboutPage() {
               <div className="value-icon">04</div>
               <h4>Financially Protected</h4>
               <p>
-                Fully ATOL and ABTA bonded. Every penny you pay is safeguarded from
+                Fully bonded. Every penny you pay is safeguarded from
                 deposit to return flight, so you can plan with complete confidence.
               </p>
             </div>

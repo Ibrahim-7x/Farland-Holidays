@@ -127,7 +127,7 @@ export function ContactPage() {
               <strong>Free</strong> consultation
             </div>
             <div className="cp-hero-badge">
-              <strong>ATOL</strong> protected
+              <strong>Protected</strong>
             </div>
           </div>
         </div>
@@ -522,7 +522,7 @@ export function ContactPage() {
                     <div className="trust-item">🔒 <span>Secure &amp; confidential</span></div>
                     <div className="trust-item">⚡ <span>Reply in 2 hours</span></div>
                     <div className="trust-item">💰 <span>No booking fees</span></div>
-                    <div className="trust-item">🛡 <span>ATOL protected</span></div>
+                    <div className="trust-item">🛡 <span>Fully protected</span></div>
                   </div>
                 </div>
               )}
